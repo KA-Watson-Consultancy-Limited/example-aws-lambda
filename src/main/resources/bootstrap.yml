@@ -1,0 +1,10 @@
+micronaut:
+  application:
+    name: awsLambda
+  config-client:
+    enabled: true
+aws:
+  secretsmanager:
+    secrets:
+      - secret-name: rds
+        prefix: database

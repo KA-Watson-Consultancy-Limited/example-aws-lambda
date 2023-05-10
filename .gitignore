@@ -1,0 +1,40 @@
+**/.gradle
+**/.idea
+**/*.iml
+**/*.ipr
+**/*.iws
+**/.project
+**/.settings
+**/.classpath
+**/.factorypath
+**/*.pid
+
+**/build/
+**/target/
+**/out/
+
+**/.DS_Store
+**/Thumbs.db
+
+# CDK
+**/*.swp
+**/package-lock.json
+**/__pycache__
+**/.pytest_cache
+**/.env
+**/*.egg-info
+
+# CDK asset staging directory
+**/.cdk.staging
+**/cdk.out
+**/.venv
+**/venv
+
+**/function.zip
+**/*.bak
+
+application
+bootstrap
+
+# Build logs
+build-log-*

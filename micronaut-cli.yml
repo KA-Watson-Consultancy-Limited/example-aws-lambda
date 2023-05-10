@@ -1,0 +1,6 @@
+applicationType: function
+defaultPackage: com.example
+testFramework: kotest
+sourceLanguage: kotlin
+buildTool: gradle_kotlin
+features: [annotation-api, app-name, aws-lambda, aws-lambda-custom-runtime, aws-lambda-handler-function, aws-lambda-scheduled-event, data, data-jdbc, flyway, graalvm, gradle, http-client, jdbc-hikari, kotest, kotlin, kotlin-build, logback, micronaut-build, postgres, readme, serialization-jackson, shade, test-resources, x86, yaml]

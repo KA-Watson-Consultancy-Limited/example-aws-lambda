@@ -1,0 +1,24 @@
+micronaut:
+  application:
+    name: awsLambda
+database:
+  host: ""
+  username: ""
+  password: ""
+  port: 0
+  dbname: ""
+  useSSL: ""
+datasources:
+  default:
+    driver-class-name: org.postgresql.Driver
+    db-type: postgres
+    dialect: POSTGRES
+    url: "jdbc:postgresql://${database.host}:${database.port}/${database.dbname}?useSSL=${database.useSSL}"
+    username: "${database.username}"
+    password: "${database.password}"
+    minimumPoolSize: 1
+    maximumPoolSize: 1
+flyway:
+  datasources:
+    default:
+      enabled: true
