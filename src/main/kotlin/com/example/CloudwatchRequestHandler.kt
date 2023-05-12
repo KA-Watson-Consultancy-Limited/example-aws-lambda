@@ -1,10 +1,9 @@
 package com.example
 import com.example.aws.ScheduledEvent
-import io.micronaut.function.aws.MicronautRequestHandler
 import jakarta.inject.Inject
 import javax.transaction.Transactional
 
-class FunctionRequestHandler : MicronautRequestHandler<ScheduledEvent, Void?>() {
+object CloudwatchRequestHandler : AbstractHandler() {
 
     @Inject
     private lateinit var exampleEntityRepository: ExampleEntityRepository
@@ -15,5 +14,9 @@ class FunctionRequestHandler : MicronautRequestHandler<ScheduledEvent, Void?>() 
         exampleEntityRepository.save("Example")
         println( exampleEntityRepository.findByName("Example") )
         return null
+    }
+
+    override fun publish(input: ScheduledEvent) {
+        println("AHHHHHHHHHHHHHHHHHHHHHHH")
     }
 }

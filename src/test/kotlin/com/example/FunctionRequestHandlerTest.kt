@@ -7,7 +7,7 @@ class FunctionRequestHandlerTest {
 
     @Test
     fun testHandler() {
-        val handler = FunctionRequestHandler()
+        val handler = CloudwatchRequestHandler()
         val request = ScheduledEvent()
         val response = handler.execute(request)
         handler.close()

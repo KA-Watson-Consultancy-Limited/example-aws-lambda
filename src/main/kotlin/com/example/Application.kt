@@ -10,7 +10,7 @@ object Application {
             .args(*args)
             .packages("com.example")
             .start()
-        val handler = FunctionRequestHandler()
+        val handler = CloudwatchRequestHandler
         val request = ScheduledEvent()
         val response = handler.execute(request)
         handler.close()
