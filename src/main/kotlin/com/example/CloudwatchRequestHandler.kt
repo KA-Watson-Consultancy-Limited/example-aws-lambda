@@ -9,6 +9,7 @@ import jakarta.inject.Singleton
 import javax.transaction.Transactional
 
 @Introspected
+@Singleton
 class CloudwatchRequestHandler : AbstractHandler() {
 
     @Inject

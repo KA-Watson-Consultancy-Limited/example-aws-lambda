@@ -16,7 +16,6 @@ class MainRequestHandler : MicronautRequestHandler<ScheduledEvent, Void?>() {
     private fun findHandler(input: ScheduledEvent?): AbstractHandler {
         val handlerClasspath = "com.example.CloudwatchRequestHandler"
         try {
-            this.e
             val aClass = Class.forName(handlerClasspath, true, this.applicationContext.classLoader)
             return aClass.getDeclaredConstructor().newInstance() as AbstractHandler
         } catch (exception: Exception) {
