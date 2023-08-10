@@ -1,72 +1,29 @@
-## Micronaut 3.9.1 Documentation
+## Building the native image
 
-- [User Guide](https://docs.micronaut.io/3.9.1/guide/index.html)
-- [API Reference](https://docs.micronaut.io/3.9.1/api/index.html)
-- [Configuration Reference](https://docs.micronaut.io/3.9.1/guide/configurationreference.html)
-- [Micronaut Guides](https://guides.micronaut.io/index.html)
----
+Run `./gradlew buildNativeImage` in the project root to build the native image zip for AWS Lambda.
 
-## Deployment with GraalVM
+## AWS Deployment
 
-If you want to deploy to AWS Lambda as a GraalVM native image, run:
+There are AWS CDK scripts to create the necessary AWS infrastructure, which includes a database. You will need Python 3
+and the AWS CDK installed to run the CDK scripts.
 
-```bash
-./gradlew buildNativeLambda -Pmicronaut.runtime=lambda
+If you have NPM install you can install the AWS CDK by running `npm install -g aws-cdk`.
+
+After installing Python 3, run the following from the root of the project:
+
+```
+cd cdk
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+cdk deploy --all
 ```
 
-This will build the GraalVM native image inside a docker container and generate the `function.zip` ready for the deployment.
+## Running the Lambda
 
+After the deployment is finished, you can then run the Lambda function. Under the test tab in the Lambda functions
+console, select the Cloudwatch template and run the lambda function.
 
-## Handler
+## Deleting the deployment
 
-Handler: com.example.FunctionRequestHandler
-
-[AWS Lambda Handler](https://docs.aws.amazon.com/lambda/latest/dg/java-handler.html)
-
-- [Shadow Gradle Plugin](https://plugins.gradle.org/plugin/com.github.johnrengelman.shadow)
-- [Micronaut Gradle Plugin documentation](https://micronaut-projects.github.io/micronaut-gradle-plugin/latest/)
-- [GraalVM Gradle Plugin documentation](https://graalvm.github.io/native-build-tools/latest/gradle-plugin.html)
-## Feature http-client documentation
-
-- [Micronaut HTTP Client documentation](https://docs.micronaut.io/latest/guide/index.html#httpClient)
-
-
-## Feature test-resources documentation
-
-- [Micronaut Test Resources documentation](https://micronaut-projects.github.io/micronaut-test-resources/latest/guide/)
-
-
-## Feature aws-lambda-custom-runtime documentation
-
-- [Micronaut Custom AWS Lambda runtime documentation](https://micronaut-projects.github.io/micronaut-aws/latest/guide/index.html#lambdaCustomRuntimes)
-
-- [https://docs.aws.amazon.com/lambda/latest/dg/runtimes-custom.html](https://docs.aws.amazon.com/lambda/latest/dg/runtimes-custom.html)
-
-
-## Feature aws-lambda documentation
-
-- [Micronaut AWS Lambda Function documentation](https://micronaut-projects.github.io/micronaut-aws/latest/guide/index.html#lambda)
-
-
-## Feature data-jdbc documentation
-
-- [Micronaut Data JDBC documentation](https://micronaut-projects.github.io/micronaut-data/latest/guide/index.html#jdbc)
-
-
-## Feature flyway documentation
-
-- [Micronaut Flyway Database Migration documentation](https://micronaut-projects.github.io/micronaut-flyway/latest/guide/index.html)
-
-- [https://flywaydb.org/](https://flywaydb.org/)
-
-
-## Feature jdbc-hikari documentation
-
-- [Micronaut Hikari JDBC Connection Pool documentation](https://micronaut-projects.github.io/micronaut-sql/latest/guide/index.html#jdbc)
-
-
-## Feature serialization-jackson documentation
-
-- [Micronaut Serialization Jackson Core documentation](https://micronaut-projects.github.io/micronaut-serialization/latest/guide/)
-
-
+After you have finished, you can delete the created infrastructure by running `cdk destroy --all`.

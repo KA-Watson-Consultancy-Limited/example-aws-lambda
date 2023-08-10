@@ -73,7 +73,7 @@ class AppStack(Stack):
                                          instances=1,
                                          credentials=rds.Credentials.from_secret(db_secret, username=db_username),
                                          subnet_group=db_subnet_group,
-                                         deletion_protection=True,
+                                         deletion_protection=False,
                                          parameter_group=cluster_param_group,
                                          default_database_name="auroradb",
                                          cloudwatch_logs_exports=["postgresql"],
