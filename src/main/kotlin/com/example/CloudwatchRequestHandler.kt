@@ -1,9 +1,15 @@
 package com.example
 import com.example.aws.ScheduledEvent
+import io.micronaut.context.annotation.InjectScope
+import io.micronaut.core.annotation.Introspected
+import io.micronaut.core.annotation.ReflectiveAccess
+import io.micronaut.function.aws.runtime.AbstractMicronautLambdaRuntime
 import jakarta.inject.Inject
+import jakarta.inject.Singleton
 import javax.transaction.Transactional
 
-object CloudwatchRequestHandler : AbstractHandler() {
+@Introspected
+class CloudwatchRequestHandler : AbstractHandler() {
 
     @Inject
     private lateinit var exampleEntityRepository: ExampleEntityRepository
@@ -17,6 +23,6 @@ object CloudwatchRequestHandler : AbstractHandler() {
     }
 
     override fun publish(input: ScheduledEvent) {
-        println("AHHHHHHHHHHHHHHHHHHHHHHH")
+        execute(input)
     }
 }

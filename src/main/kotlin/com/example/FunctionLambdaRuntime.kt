@@ -8,8 +8,9 @@ class FunctionLambdaRuntime : AbstractMicronautLambdaRuntime<ScheduledEvent, Voi
 {
 
     override fun createRequestHandler(vararg args: String?): RequestHandler<ScheduledEvent, Void?> {
-        return MainRequestHandler
+        return MainRequestHandler()
     }
+
     companion object {
         @JvmStatic
         fun main(vararg args: String) {
