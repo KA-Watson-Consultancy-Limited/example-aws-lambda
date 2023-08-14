@@ -9,7 +9,7 @@ import io.micronaut.function.aws.runtime.AbstractMicronautLambdaRuntime
 abstract class AbstractHandler {
 
     open fun execute(input: ScheduledEvent): Void? {
-        publish(input)
+        input.let ( ::publish )
         return null
     }
 

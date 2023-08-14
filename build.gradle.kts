@@ -23,11 +23,11 @@ dependencies {
     implementation("io.micronaut:micronaut-http-client")
     implementation("io.micronaut.aws:micronaut-function-aws")
     implementation("io.micronaut.aws:micronaut-function-aws-custom-runtime")
-    implementation("io.micronaut.data:micronaut-data-jdbc:3.9.6")
-    implementation("io.micronaut.flyway:micronaut-flyway")
+//    implementation("io.micronaut.data:micronaut-data-jdbc:3.9.6")
+//    implementation("io.micronaut.flyway:micronaut-flyway")
     implementation("io.micronaut.kotlin:micronaut-kotlin-runtime")
     implementation("io.micronaut.serde:micronaut-serde-jackson")
-    implementation("io.micronaut.sql:micronaut-jdbc-hikari")
+//    implementation("io.micronaut.sql:micronaut-jdbc-hikari")
     implementation("jakarta.annotation:jakarta.annotation-api")
     implementation("org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}")
@@ -36,7 +36,7 @@ dependencies {
     runtimeOnly("io.micronaut:micronaut-http-server")
     runtimeOnly("ch.qos.logback:logback-classic")
     runtimeOnly("com.fasterxml.jackson.module:jackson-module-kotlin")
-    runtimeOnly("org.postgresql:postgresql")
+//    runtimeOnly("org.postgresql:postgresql")
 }
 
 application {

@@ -9,18 +9,18 @@ import jakarta.inject.Inject
 class MainRequestHandler : MicronautRequestHandler<ScheduledEvent, Void?>() {
 
     override fun execute(input: ScheduledEvent?): Void? {
-        findHandler(input).publish(input ?: throw Exception("ahhh"))
+        val handler = findHandler(input)
+        input?.let ( handler::publish )
         return null
     }
 
     private fun findHandler(input: ScheduledEvent?): AbstractHandler {
         val handlerClasspath = "com.example.CloudwatchRequestHandler"
         try {
-            val aClass = Class.forName(handlerClasspath, true, this.applicationContext.classLoader)
-            return aClass.getDeclaredConstructor().newInstance() as AbstractHandler
+            return Class.forName(handlerClasspath).getDeclaredConstructor().newInstance() as AbstractHandler
         } catch (exception: Exception) {
             println(exception.message)
             throw Exception("Unable to find LAMBDA_HANDLER class by reflection (${handlerClasspath})")
         }
     }
-}
+}cd ..

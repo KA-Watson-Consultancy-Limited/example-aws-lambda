@@ -58,26 +58,26 @@ class AppStack(Stack):
         db_subnet_group = rds.SubnetGroup(self, "SubnetGroup", description='Subnet group for the cluster',
                                           vpc=vpc, vpc_subnets=ec2.SubnetSelection(subnets=vpc.isolated_subnets))
 
-        db_cluster = rds.DatabaseCluster(self, "DatabaseCluster", engine=rds.DatabaseClusterEngine.aurora_postgres(
-            version=rds.AuroraPostgresEngineVersion.of("14.6", "14")),
-                                         instance_props=rds.InstanceProps(vpc=vpc, enable_performance_insights=True,
-                                                                          instance_type=ec2.InstanceType.of(
-                                                                              ec2.InstanceClass.BURSTABLE3,
-                                                                              ec2.InstanceSize.MEDIUM),
-                                                                          parameter_group=db_param_group,
-                                                                          security_groups=[rds_instance_sg],
-                                                                          vpc_subnets=ec2.SubnetSelection(
-                                                                              subnets=vpc.isolated_subnets)),
-                                         storage_encryption_key=kms_key,
-                                         monitoring_interval=Duration.minutes(1),
-                                         instances=1,
-                                         credentials=rds.Credentials.from_secret(db_secret, username=db_username),
-                                         subnet_group=db_subnet_group,
-                                         deletion_protection=False,
-                                         parameter_group=cluster_param_group,
-                                         default_database_name="auroradb",
-                                         cloudwatch_logs_exports=["postgresql"],
-                                         cloudwatch_logs_retention=logs.RetentionDays.SIX_MONTHS)
+        # db_cluster = rds.DatabaseCluster(self, "DatabaseCluster", engine=rds.DatabaseClusterEngine.aurora_postgres(
+        #     version=rds.AuroraPostgresEngineVersion.of("14.6", "14")),
+        #                                  instance_props=rds.InstanceProps(vpc=vpc, enable_performance_insights=True,
+        #                                                                   instance_type=ec2.InstanceType.of(
+        #                                                                       ec2.InstanceClass.BURSTABLE3,
+        #                                                                       ec2.InstanceSize.MEDIUM),
+        #                                                                   parameter_group=db_param_group,
+        #                                                                   security_groups=[rds_instance_sg],
+        #                                                                   vpc_subnets=ec2.SubnetSelection(
+        #                                                                       subnets=vpc.isolated_subnets)),
+        #                                  storage_encryption_key=kms_key,
+        #                                  monitoring_interval=Duration.minutes(1),
+        #                                  instances=1,
+        #                                  credentials=rds.Credentials.from_secret(db_secret, username=db_username),
+        #                                  subnet_group=db_subnet_group,
+        #                                  deletion_protection=False,
+        #                                  parameter_group=cluster_param_group,
+        #                                  default_database_name="auroradb",
+        #                                  cloudwatch_logs_exports=["postgresql"],
+        #                                  cloudwatch_logs_retention=logs.RetentionDays.SIX_MONTHS)
 
         base_policies = [
             iam.PolicyStatement(actions=["logs:CreateLogStream",

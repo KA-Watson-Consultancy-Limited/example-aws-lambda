@@ -1,25 +1,18 @@
 package com.example
+
 import com.example.aws.ScheduledEvent
-import io.micronaut.context.annotation.InjectScope
-import io.micronaut.core.annotation.Introspected
 import io.micronaut.core.annotation.ReflectiveAccess
-import io.micronaut.function.aws.runtime.AbstractMicronautLambdaRuntime
 import jakarta.inject.Inject
 import jakarta.inject.Singleton
-import javax.transaction.Transactional
 
-@Introspected
-@Singleton
+@ReflectiveAccess
 class CloudwatchRequestHandler : AbstractHandler() {
 
     @Inject
-    private lateinit var exampleEntityRepository: ExampleEntityRepository
+    lateinit var genericConsumer: GenericConsumer
 
-    @Transactional
     override fun execute(input: ScheduledEvent): Void? {
-        println( exampleEntityRepository.findByName("Example") )
-        exampleEntityRepository.save("Example")
-        println( exampleEntityRepository.findByName("Example") )
+        genericConsumer.testIt()
         return null
     }
 
