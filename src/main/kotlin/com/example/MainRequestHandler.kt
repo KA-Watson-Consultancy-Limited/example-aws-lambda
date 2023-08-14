@@ -23,4 +23,4 @@ class MainRequestHandler : MicronautRequestHandler<ScheduledEvent, Void?>() {
             throw Exception("Unable to find LAMBDA_HANDLER class by reflection (${handlerClasspath})")
         }
     }
-}cd ..
+}
