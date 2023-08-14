@@ -4,7 +4,7 @@ Run `./gradlew buildNativeImage` in the project root to build the native image z
 
 ## AWS Deployment
 
-There are AWS CDK scripts to create the necessary AWS infrastructure, which includes a database. You will need Python 3
+There are AWS CDK scripts to create the necessary AWS infrastructure. You will need Python 3
 and the AWS CDK installed to run the CDK scripts.
 
 If you have NPM install you can install the AWS CDK by running `npm install -g aws-cdk`.
